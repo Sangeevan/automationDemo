@@ -1,5 +1,6 @@
 package com.example.unitTestDemo.controller;
 
+import com.example.unitTestDemo.dto.UserDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureRestTestClient;
@@ -19,10 +20,27 @@ public class UserControllerIT {
     @Test
     void testGetUserName() {
         restTestClient.get()
-                .uri("http://localhost:%d/user/1".formatted(port))
+                .uri("http://localhost:%d/user/name/1".formatted(port))
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(String.class)
                 .isEqualTo("Sangeevan");
+    }
+
+    @Test
+    void testGetUser() {
+        restTestClient.get()
+                .uri("http://localhost:%d/user/get?id=1".formatted(port))
+                .exchange()
+                .expectStatus().isOk();
+    }
+
+    @Test
+    void testAddUser() {
+        restTestClient.post()
+                .uri("http://localhost:%d/user/add".formatted(port))
+                .body(new UserDto(101L, "Sangeevan101", 101))
+                .exchange()
+                .expectStatus().isOk();
     }
 }

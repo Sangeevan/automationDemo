@@ -33,6 +33,10 @@ public class UserService {
         return repo.getReferenceById(id).getName();
     }
 
+    public User getUser(Long id) {
+        return repo.getReferenceById(id);
+    }
+
     public User saveUser(User user) {
         return repo.save(user);
     }

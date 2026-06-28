@@ -1,21 +1,14 @@
-package com.example.unitTestDemo.model;
+package com.example.unitTestDemo.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "USERS")
-public class User {
-    @Id
+public class UserDto {
     private Long id;
     private String name;
     private int age;
 
-    public User() {
+    public UserDto() {
     }
 
-    public User(Long id, String name, int age) {
+    public UserDto(Long id, String name, int age) {
         this.id = id;
         this.name = name;
         this.age = age;
